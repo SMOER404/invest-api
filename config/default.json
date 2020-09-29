@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "jwtSecret": "invest-api",
+    "mongoUri": "mongodb+srv://vladmelnikov:<Smoerpower1>@cluster0.lmja3.mongodb.net/<dbname>?retryWrites=true&w=majority"
+}
