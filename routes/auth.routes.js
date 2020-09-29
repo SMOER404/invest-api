@@ -18,17 +18,18 @@ router.post(
     ],
     async (req,res) => {    
     try {
+        console.log(req.body)
         const errors = validationResult(req);
 
-        if (!erros.isEmpty()) {
+        if (!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array(),
                 message: 'Некорректные данные при регистрации'
             })
         }
 
-        const {email, password} = req.body
-        
+        const {email, password} = req.body;
+
         const candidate = await User.findOne({email: email})
 
         if (candidate) {
@@ -55,11 +56,12 @@ router.post(
         check('email', 'Введите корректный email').normalizeEmail().isEmail(),
         check('password', 'Введите пароль').exists()
     ],
-    async (req,res) => {    
+    async (req,res) => {
     try {
+
         const errors = validationResult(req);
 
-        if (!erros.isEmpty()) {
+        if (!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array(),
                 message: 'Некорректные данные при входе в систему'
@@ -67,6 +69,7 @@ router.post(
         }
 
         const {email, password} = req.body
+
 
         // ищем по email
         const user = await User.findOne({ email: email })
